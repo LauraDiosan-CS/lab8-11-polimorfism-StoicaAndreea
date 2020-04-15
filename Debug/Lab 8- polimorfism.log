@@ -1,0 +1,7 @@
+﻿  Tests.cpp
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(100,13): warning C4101: 'e': unreferenced local variable
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(60): message : while compiling class template member function 'void RepositoryFile<Phone>::loadFromFile(const char *)'
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\Tests.cpp(65): message : see reference to function template instantiation 'void RepositoryFile<Phone>::loadFromFile(const char *)' being compiled
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\Tests.h(8): message : see reference to class template instantiation 'RepositoryFile<Phone>' being compiled
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\Repository.h(103): warning C4715: 'RepositoryTemplate<Phone>::getItemFromPos': not all control paths return a value
+  Lab 8- polimorfism.vcxproj -> C:\Users\Andreea\source\repos\Lab 8- polimorfism\Debug\Lab 8- polimorfism.exe
