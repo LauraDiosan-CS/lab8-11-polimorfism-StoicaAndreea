@@ -1,18 +1,23 @@
 #pragma once
 #include"Phone.h"
+#include"Drone.h"
+#include "Serie.h"
 #include"Repository.h"
 #include"RepositoryFile.h"
 #include"Service.h"
 class Tests {
 private:
-	RepositoryFile<Phone> repof;
+	RepositoryFile<Drone> repof;
 	RepositoryTemplate<Phone> repo;
 	//Service serv();
 public:
 	Tests();
-	void testDomain();
+	void testDomainPhone();
+	void testDomainDrone();
+	//void testDomainSerie();
 	void testRepoTemplate();
 	void testRepoFile();
+	void testRepoFilePhone();
 	//void testService();
 	~Tests();
 };

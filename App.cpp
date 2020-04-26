@@ -13,9 +13,11 @@ int main()
 {
     cout << "start"<<endl;
     Tests test;
-    test.testDomain();
-    test.testRepoTemplate();
-    test.testRepoFile();
+    test.testDomainPhone();
+   // test.testDomainDrone();
+  // test.testRepoTemplate();
+   //test.testRepoFile();
+  // test.testRepoFilePhone();
     cout << "succes" << endl;
 }
 

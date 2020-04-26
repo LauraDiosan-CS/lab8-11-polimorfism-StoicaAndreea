@@ -148,17 +148,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="Drone.cpp" />
     <ClCompile Include="Phone.cpp" />
     <ClCompile Include="Repository.cpp" />
     <ClCompile Include="RepositoryFile.cpp" />
+    <ClCompile Include="Serie.cpp" />
     <ClCompile Include="Service.cpp" />
     <ClCompile Include="Tests.cpp" />
     <ClCompile Include="UI.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Drone.h" />
     <ClInclude Include="Phone.h" />
     <ClInclude Include="Repository.h" />
     <ClInclude Include="RepositoryFile.h" />
+    <ClInclude Include="Serie.h" />
     <ClInclude Include="Service.h" />
     <ClInclude Include="Tests.h" />
     <ClInclude Include="UI.h" />

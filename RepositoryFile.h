@@ -12,9 +12,10 @@ class RepositoryFile :public RepositoryTemplate<T>
 {
 private:
 	const char* fileName;
+	const char* outputFile;
 public:
 	RepositoryFile();
-	RepositoryFile(const char*);
+	RepositoryFile(const char*, const char*);
 	int addElem(const T&);
 	int deleteElem(const T&);
 	void updateElem(const T&, const T);
@@ -27,11 +28,13 @@ template<class T>
 RepositoryFile<T>::RepositoryFile() :RepositoryTemplate<T>()
 {
 	fileName = "";
+	outputFile = "";
 }
 template<class T>
-RepositoryFile<T>::RepositoryFile(const char* fileName)
+RepositoryFile<T>::RepositoryFile(const char* fileName, const char* outputFile)
 {
 	this->fileName = fileName;
+	this->outputFile=outputFile;
 	loadFromFile(fileName);
 	//RepositoryTemplate::clearElem();
 	//fis = fileName;
@@ -80,22 +83,24 @@ void RepositoryFile<T>::loadFromFile(const char* fileName)
 	//delete[] numar;
 	//delete[] status;
 	//f.close();
+	if (fileName == NULL)
+		return;
 	try {
-		if (this->fileName == NULL)
-			return;
-		std::ifstream in(this->fileName);
-		int size;
-		in >> size;
-		in.get();
-		for (int i = 0; i < size; i++)
-		{
-			T t;
-			std::string inStr;
-			getline(in, inStr);
-			t.fromString(inStr);
-			this->addElem(t);
+		this->fileName = fileName;
+		std::ifstream inf(this->fileName);
+		RepositoryTemplate<T>::clearElem();
+		string line;
+		if (inf.is_open()) {
+			while (getline(inf, line))
+			{
+				//T t;
+				//std::string inStr;
+				//t.fromString(inStr);
+				this->addElem(T(line));
+				//cout << line << endl;
+			}
+			inf.close();
 		}
-		in.close();
 	}
 	catch (int e) {
 		std::cout << "Failed loading from file.\n";
@@ -119,9 +124,19 @@ void RepositoryFile<T>::saveToFile()
 	//out << this->dim() << '\n';
 	for (T t : this->getAll())
 	{
-		out << t << '\n';
+		out << t;// << '\n';
 	}
 	out.close();
+
+	if (this->outputFile == NULL)
+		return;
+	std::ofstream ou(this->outputFile);
+	//out << this->dim() << '\n';
+	for (T t : this->getAll())
+	{
+		ou << t;// << '\n';
+	}
+	ou.close();
 }
 
 template<class T>
