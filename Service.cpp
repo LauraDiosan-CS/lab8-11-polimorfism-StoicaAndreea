@@ -1,11 +1,13 @@
 #include "Service.h"
 #include "User.h"
+#include "SerieValidator.h"
+#include "PhoneValidator.h"
 
 //Service::Service()
 //{
 //}
 
-//Service::Service(RepositoryTemplate<Phone> repo,RepositoryTemplate<User> repoUseri):this->repo(repo)
+//Service::Service(RepositoryTemplate<Serie> repo,RepositoryTemplate<User> repoUseri):this->repo(repo)
 //{
 //	this->repo = repo;
 //	this->repoUser = repoUseri;
@@ -37,7 +39,7 @@ void Service::logout(/*string name, string pass*/)
 //	repo.loadFromFile(f, delim);
 //}
 
-list<Phone> Service::getAllSeries()
+list<Serie> Service::getAllSeries()
 {
 	return repo.getAll();
 }
@@ -46,10 +48,23 @@ int Service::getSize() {
 	return repo.getSize();
 }
 
-Phone Service::getItemFromPos(int i) {
+Serie Service::getItemFromPos(int i) {
 	return repo.getItemFromPos(i);
 }
 
+void Service::addElem(Serie& s) {
+	//validate(s);
+	repo.addElem(s);
+}
+
+void Service::deleteElem(Serie& s) {
+	if (repo.findElem(s) == -1) {
+		throw exception("could not find item");
+	}
+	else {
+		repo.deleteElem(s);
+	}
+}
 Service::~Service()
 {
 }
