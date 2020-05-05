@@ -34,7 +34,9 @@ void Service::logout(/*string name, string pass*/)
 	//User u(name, pass);
 	//repoUser.deleteElem(u);
 }
-
+void Service::validatePhone(Phone p) {
+	pv.validate(p);
+}
 //void Service::loadFromFile(string f, char delim) {
 //	repo.loadFromFile(f, delim);
 //}
@@ -52,19 +54,21 @@ Serie* Service::getItemFromPos(int i) {
 	return (repo.getItemFromPos(i));
 }
 
-//void Service::addElem(Serie& s) {
-//	//validate(s);
-//	repo.addElem(s);
-//}
-//
-//void Service::deleteElem(Serie& s) {
-//	if (repo.findElem(s) == -1) {
-//		throw exception("could not find item");
-//	}
-//	else {
-//		repo.deleteElem(s);
-//	}
-//}
+void Service::addElem(Serie*& s) {
+	sv.validate(s);
+	repo.addElem(s);
+}
+
+void Service::deleteElem(Serie*& s) {
+	if (repo.findElem(s) == -1) {
+		throw exception("could not find item");
+	}
+	else {
+		repo.deleteElem(s);
+	}
+}
+
+
 Service::~Service()
 {
 }

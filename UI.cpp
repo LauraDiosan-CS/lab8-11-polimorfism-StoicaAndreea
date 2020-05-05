@@ -3,19 +3,48 @@
 #include<string.h>
 using namespace std;
 
-//void UI::addProj() {
-//	Car proj;
-//	cout << "Give the Car:";
-//	cin >> proj;
-//	try {
-//		s.addCar(proj);
-//		cout << "the Car has been successfully added" << endl;
-//	}
-//	catch (exception e) { cout << "exception occuredddd!" << "->"; cout << e.what(); }
-//}
-//
-//
-//
+void UI::addElem() {
+	cout << "what yould you like to add? :"<<endl;
+	cout << "	a. Phone" << endl;
+	cout << "	b.Drone" << endl;
+	try {
+	string ras = "";
+	cin >> ras;
+	Serie* ser;
+	if (ras == "a") {
+		try {
+			Phone p;
+			cin >> p;
+			s.validatePhone(p);
+			ser = p.clone();
+			s.addElem(ser);
+		}
+		catch (PhoneException e)
+		{
+			for (int i = 0; i < e.getErrors().size(); i++)
+				cout << e.getErrors()[i];
+		}
+	}
+	else {
+		try {
+			Drone p;
+			cin >> p;
+			ser = p.clone();
+			s.addElem(ser);
+		}
+		catch (SerieException e) {
+			for (int i = 0; i < e.getErrors().size(); i++)
+				cout << e.getErrors()[i];
+		}
+	}
+
+		//cout << "the seria has been successfully added" << endl;
+	}
+	catch (exception e) { cout << "exception occuredddd!" << "->"; cout << e.what(); }
+}
+
+
+
 //void UI::findProj() {
 //	Car proj;
 //	cout << "Give the Car:";
@@ -24,8 +53,30 @@ using namespace std;
 //	if (rez >= 0) cout << "The Car has been found!" << endl;
 //	else cout << "The Car has not been found!" << endl;
 //}
-//
-//void UI::delProj() {
+
+void UI::delElem() {
+	cout << "what yould you like to delete? :" << endl;
+	cout << "	a. Phone" << endl;
+	cout << "	b.Drone" << endl;
+	try {
+		string ras = "";
+		cin >> ras;
+		Serie* ser;
+		if (ras == "a") {
+			Phone p;
+			cin >> p;
+			ser = p.clone();
+		}
+		else {
+			Drone p;
+			cin >> p;
+			ser = p.clone();
+		}
+		s.deleteElem(ser);
+		cout << "the seria has been successfully deleted" << endl;
+	}
+	catch (exception e) { cout << "exception occuredddd!" << "->"; cout << e.what(); }
+}
 //	Car proj;
 //	cout << "Give the Car:" << endl;;
 //	cin >> proj;
@@ -114,10 +165,10 @@ void UI::showUI()
 					cout << "#####################~~ MENU ~~###################" << endl;
 					cout << endl;
 					cout << "OPTIONS: " << endl;
-					/*cout << "	1. Add Car " << endl;
-					cout << "	2. Search Car " << endl;
+					cout << "	1. Add " << endl;
+					//cout << "	2. Search Car " << endl;
 					cout << "	3. Delete Car " << endl;
-					cout << "	4. Update Car " << endl;*/
+					//cout << "	4. Update Car " << endl;
 					cout << "	5. Show " << endl;
 					cout << "	6. Log out" << endl;
 					cout << "	0. EXIT!" << endl;
@@ -127,9 +178,9 @@ void UI::showUI()
 					cout << endl;
 					cout << endl;
 					switch (opt) {
-						//case 1: {addProj(); break; }
+						case 1: {addElem(); break; }
 						//case 2: {findProj(); break; }
-						//case 3: {delProj(); break; }
+						case 3: {delElem(); break; }
 						//case 4: {updateProj(); break; }
 					case 5: {showAll(); break; }
 					case 6: {logOut(); cout << "you have been logged outtttt" << endl; break; }

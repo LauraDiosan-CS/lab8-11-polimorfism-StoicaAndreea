@@ -64,7 +64,6 @@ int RepositoryTemplate<T>::deleteElem(T e)
 	typename list<T>::iterator it;
 	for (it = elem.begin(); it != elem.end(); ++it)
 	{
-
 		if ((*it)->toString() == e->toString())
 		{
 			elem.erase(it);
@@ -108,7 +107,7 @@ void RepositoryTemplate<T>::updateElem(T vechi,T nou)
 
 		if ((*it)->toString() == vechi->toString())
 		{
-			vechi = nou->clone();
+			*it = nou->clone();
 		}
 	}
 

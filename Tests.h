@@ -22,10 +22,9 @@ public:
 	void testDomainDrone();
 	//void testDomainSerie();
 	void testRepoTemplate();
-	//void testRepoFile();
-	//void testRepoFilePhone();
 	void testRepoFileSerie();
-	//void testRepoFileCSV();
+	void testRepoFileCSV();
+	void testRepoFileHTML();
 	void testService();
 	~Tests();
 };

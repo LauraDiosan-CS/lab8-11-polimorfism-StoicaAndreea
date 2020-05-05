@@ -46,6 +46,8 @@ void Tests::testDomainDrone() {
 	e2.setModel("MS 74 AAA");
 	assert(strcmp(e2.getModel(), "MS 74 AAA") == 0);
 }
+
+
 void Tests::testRepoTemplate() {
 	vector<string> v;
 	string c;
@@ -64,8 +66,6 @@ void Tests::testRepoTemplate() {
 	assert(*rep.getAll().front() == *e1);
 	assert(*rep.getAll().back() == *e4);
 	assert(*rep.getItemFromPos(0) == *e1);
-
-
 	Serie *e0=new Phone("eee", "MS 77 SSA", 1,v);
 	Serie *e01= new Phone("bbb", "aaa", 1,v);
 	assert(rep.findElem(e4) == 3);
@@ -73,60 +73,67 @@ void Tests::testRepoTemplate() {
 	rep.deleteElem(e3);
 	assert(rep.findElem(e3) == -1);
 	assert(rep.getSize() == 3);
-	//Serie *e= new Phone("bbb", "aaa", 1,v);
-	//rep.updateElem(e1->clone(), e->clone());
-	//assert(*rep.getItemFromPos(0) == *e01);
+	Serie *e= new Phone("bbb", "aaa", 1,v);
+	rep.updateElem(e1->clone(), e->clone());
+	assert(*rep.getItemFromPos(0) == *e01);
 }
 
-//void Tests::testRepoFilePhone() {
-//	RepositoryFile<Phone> repof ("Tests.txt", ' ');
-//	vector<string> v;
-//	string c;
-//	c = "orange";
-//	v.push_back(c);
-//	c = "cosmote";
-//	v.push_back(c);
-//	assert(repof.getSize() == 4);
-//	Phone a("aaa", "bbb", 1, v);
-//	repof.addElem(a);
-//	assert(repof.getSize() == 5);
-//	assert(repof.findElem(a) == 4);
-//	Phone b("abc", "aaa", 1, v);
-//	assert(repof.findElem(b) == -1);
-//	repof.deleteElem(a);
-//	assert(repof.getSize() == 4);
-//	list<Phone> rez = repof.getAll();
-//	assert(rez.size() == 4);
-//	repof.updateElem(Phone("bbb", "aaa", 1,v), b);
-//	assert(repof.findElem(b) == 0);
-//	assert(repof.getItemFromPos(0) == Phone("abc", "aaa", 1, v));
-//	assert(repof.getSize() == 4);
-//
-//}
-//void Tests::testRepoFileCSV() {
-//	RepositoryFileCSV<Serie> repof("Tests.csv");
-//	vector<string> v;
-//	string c;
-//	c = "orange";
-//	v.push_back(c);
-//	c = "cosmote";
-//	v.push_back(c);
-//	assert(repof.getSize() == 4);
-//	Serie a("aaa", "bbb", 1);
-//	repof.addElem(a);
-//	assert(repof.getSize() == 5);
-//	assert(repof.findElem(a) == 4);
-//	Serie b("abc", "aaa", 1);
-//	assert(repof.findElem(b) == -1);
-//	repof.deleteElem(a);
-//	assert(repof.getSize() == 4);
-//	list<Serie> rez = repof.getAll();
-//	assert(rez.size() == 4);
-//	repof.updateElem(Serie("bbb", "aaa", 1), b);
-//	assert(repof.findElem(b) == 0);
-//	assert(repof.getItemFromPos(0) == Serie("abc", "aaa", 1));
-//	assert(repof.getSize() == 4);
-//}
+
+void Tests::testRepoFileCSV() {
+	SerializerSerie* s = new SerializerSerie();
+	RepositoryFileCSV<Serie*> repof("Tests.csv", s);
+	vector<string> v;
+	string c;
+	c = "orange";
+	v.push_back(c);
+	c = "cosmote";
+	v.push_back(c);
+	assert(repof.getSize() == 4);
+	Serie* p = new Phone("aaa", "bbb", 1, v);
+	repof.addElem(p);
+	assert(repof.getSize() == 5);
+	assert(repof.findElem(p) == 4);
+	Serie* p1 = new Phone("abc", "aaa", 1, v);
+	assert(repof.findElem(p1) == -1);
+	repof.deleteElem(p);
+	assert(repof.getSize() == 4);
+	assert(repof.findElem(p) == -1);
+	list<Serie*> rez = repof.getAll();
+	assert(rez.size() == 4);
+	Serie* p2 = new Phone("bbb", "aaa", 1, v);
+	//	repof.updateElem(p2, p1);
+	//	assert(repof.findElem(p1) == 0);
+	//	assert(repof.getItemFromPos(0) == p1);
+	assert(repof.getSize() == 4);
+}
+
+void Tests::testRepoFileHTML() {
+	SerializerSerie* s = new SerializerSerie();
+	RepositoryFileHTML<Serie*> repof("Tests.html", s);
+	vector<string> v;
+	string c;
+	c = "orange";
+	v.push_back(c);
+	c = "cosmote";
+	v.push_back(c);
+	assert(repof.getSize() == 4);
+	Serie* p = new Phone("aaa", "bbb", 1, v);
+	repof.addElem(p);
+	assert(repof.getSize() == 5);
+	assert(repof.findElem(p) == 4);
+	Serie* p1 = new Phone("abc", "aaa", 1, v);
+	assert(repof.findElem(p1) == -1);
+	repof.deleteElem(p);
+	assert(repof.getSize() == 4);
+	assert(repof.findElem(p) == -1);
+	list<Serie*> rez = repof.getAll();
+	assert(rez.size() == 4);
+	Serie* p2 = new Phone("bbb", "aaa", 1, v);
+	//	repof.updateElem(p2, p1);
+	//	assert(repof.findElem(p1) == 0);
+	//	assert(repof.getItemFromPos(0) == p1);
+	assert(repof.getSize() == 4);
+}
 void Tests::testRepoFileSerie() {
 	SerializerSerie* s = new SerializerSerie();
 	RepositoryFile<Serie*> repof("Tests.txt", ' ', s);
@@ -148,11 +155,15 @@ void Tests::testRepoFileSerie() {
 	assert(repof.findElem(p) == -1);
 	list<Serie*> rez = repof.getAll();
 	assert(rez.size() == 4);
-	Serie* p2 = new Phone("bbb", "aaa", 1, v);
-//	repof.updateElem(p2, p1);
-//	assert(repof.findElem(p1) == 0);
-//	assert(repof.getItemFromPos(0) == p1);
+	
+	/*Serie* p2 = new Phone("bbb", "aaa", 1, v);
+	repof.updateElem(p2, p1);
+	assert(repof.findElem(p1) == 0);
+	assert(*repof.getItemFromPos(0) == *p1);*/
 	assert(repof.getSize() == 4);
+	Phone l("ioi", "ioi", 2, v);
+	repof.addElem(l.clone());
+	repof.deleteElem(l.clone());
 }
 Tests::~Tests() {}
 
@@ -169,7 +180,6 @@ void Tests::testService() {
 	assert(serv.login("cristina", "1414") == 0);
 	assert(serv.login("ana", "1234") == 1);
 	assert(serv.login("maria", "1234") == 0);
-	cout<<repo.getSize();
 }
 	//Phone e1("aaa", "MS 74 SSC", "free");
 	//Phone e2("bbb", "MS 75 SSC", "occupied");

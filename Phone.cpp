@@ -6,7 +6,7 @@ Phone::Phone():Serie(){
 	//this->producer = NULL;
 	//this->model = NULL;
 	//this->units = 0;
-	//this->operators = {};
+	this->operators = {};
 }
 
 Phone::Phone(const char* producer, const char* model, int units, vector<string>operators):Serie(producer,model, units){
@@ -197,20 +197,33 @@ istream& operator >>(istream& is, Phone& e) {
 	int units;
 	is >> units;
 	int ok = 0;
-	vector<string> operators;
-	cout << "Give the operators";
+	vector<string> operators = {};
+	cout << "the operators:" << endl;
+	cout << "how many operators will you enter? ";
+	int n=0;
+	is >> n;
 	char* op = new char[10];
-	is >> op;
+	/*is >> op;
 	while (strcmp(op, "0") != 0)
+	{
 		operators.push_back(op);
-
+		is >> op;
+	}*/
+	int i = 0;
+	while (i < n)
+	{
+		cout << "enter operator no " << i + 1;
+		is >> op;
+		operators.push_back(op);
+		i++;
+	}
 	e.setProducer(producer);
 	e.setModel(model);
 	e.setUnits(units);
 	e.setOperators(operators);
 	delete[] producer;
 	delete[] model;
-	delete[] op;
+	//delete[] op;
 	//vezi aici de stergerea vectorului
 	return is;
 }

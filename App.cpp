@@ -21,7 +21,8 @@ int main()
     test.testDomainDrone();
     test.testRepoTemplate();
    //test.testRepoFilePhone();
-    //test.testRepoFileCSV();
+    test.testRepoFileCSV();
+    test.testRepoFileHTML();
     test.testRepoFileSerie();
     test.testService();
     cout << "succes" << endl;
@@ -29,8 +30,8 @@ int main()
     SerializerUser* u = new SerializerUser();
     //Serializer<User*> u=newSerializer;
    // RepositoryFile<Serie*> repof("Tests.txt",' ',s);
-   // RepositoryFileCSV<Serie*>repof("Tests.csv",s);
-    RepositoryFileHTML<Serie*>repof("Tests.html",s);
+   //RepositoryFileCSV<Serie*>repof("Series.csv",s);
+    RepositoryFileHTML<Serie*>repof("Series.html",s);
     RepositoryFile<User*> repo("Users.txt", ' ', u);
     Service serv(repof, repo);
     UI ui(serv);

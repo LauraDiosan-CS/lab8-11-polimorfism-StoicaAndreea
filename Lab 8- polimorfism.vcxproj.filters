@@ -130,6 +130,12 @@
     <None Include="Tests.html">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Series.csv">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Series.html">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Xsd Include="XMLSchema.xsd">

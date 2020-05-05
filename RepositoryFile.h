@@ -87,7 +87,6 @@ RepositoryFile<T>::~RepositoryFile()
 template<class T>
 int RepositoryFile<T>::addElem(T e) {
 	int r = RepositoryTemplate<T>::addElem(e);
-	cout << r;
 	if (r != -1) {
 		saveToFile();
 		return 0;
