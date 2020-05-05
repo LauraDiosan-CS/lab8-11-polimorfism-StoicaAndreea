@@ -1,14 +1,10 @@
-﻿  App.cpp
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFileHTML.h(58,13): warning C4101: 'e': unreferenced local variable
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFileHTML.h(40): message : while compiling class template member function 'void RepositoryFileHTML<Serie>::loadFromFile(const char *)'
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFileHTML.h(35): message : see reference to function template instantiation 'void RepositoryFileHTML<Serie>::loadFromFile(const char *)' being compiled
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFileHTML.h(33): message : while compiling class template member function 'RepositoryFileHTML<Serie>::RepositoryFileHTML(const char *)'
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\App.cpp(28): message : see reference to function template instantiation 'RepositoryFileHTML<Serie>::RepositoryFileHTML(const char *)' being compiled
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\App.cpp(28): message : see reference to class template instantiation 'RepositoryFileHTML<Serie>' being compiled
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(61,13): warning C4101: 'e': unreferenced local variable
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(42): message : while compiling class template member function 'void RepositoryFile<User>::loadFromFile(const char *,const char)'
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(37): message : see reference to function template instantiation 'void RepositoryFile<User>::loadFromFile(const char *,const char)' being compiled
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(35): message : while compiling class template member function 'RepositoryFile<User>::RepositoryFile(const char *,const char)'
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\App.cpp(29): message : see reference to function template instantiation 'RepositoryFile<User>::RepositoryFile(const char *,const char)' being compiled
-C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\App.cpp(29): message : see reference to class template instantiation 'RepositoryFile<User>' being compiled
+﻿  Tests.cpp
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(63,13): warning C4101: 'e': unreferenced local variable
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(46): message : while compiling class template member function 'void RepositoryFile<Serie *>::loadFromFile(const char *,const char)'
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(41): message : see reference to function template instantiation 'void RepositoryFile<Serie *>::loadFromFile(const char *,const char)' being compiled
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\RepositoryFile.h(38): message : while compiling class template member function 'RepositoryFile<Serie *>::RepositoryFile(const char *,const char,Serializer<Serie *> *)'
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\Tests.cpp(132): message : see reference to function template instantiation 'RepositoryFile<Serie *>::RepositoryFile(const char *,const char,Serializer<Serie *> *)' being compiled
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\Tests.cpp(132): message : see reference to class template instantiation 'RepositoryFile<Serie *>' being compiled
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\Repository.h(135): warning C4715: 'RepositoryTemplate<Serie *>::getItemFromPos': not all control paths return a value
+C:\Users\Andreea\source\repos\Lab 8- polimorfism\Lab 8- polimorfism\SerializerSerie.h(32): warning C4715: 'SerializerSerie::fromString': not all control paths return a value
   Lab 8- polimorfism.vcxproj -> C:\Users\Andreea\source\repos\Lab 8- polimorfism\Debug\Lab 8- polimorfism.exe

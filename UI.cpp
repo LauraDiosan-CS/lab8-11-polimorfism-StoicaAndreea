@@ -52,10 +52,10 @@ void UI::logOut() {
 }
 
 void UI::showAll() {
-	list <Phone>::iterator it;
+	list <Serie*>::iterator it;
 	for (int i = 0; i < s.getSize(); i++)
 	{
-		cout << s.getItemFromPos(i).toString() << endl;;
+		cout << (*s.getItemFromPos(i)).toString() << endl;
 	}
 }
 

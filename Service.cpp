@@ -19,8 +19,8 @@
 
 bool Service::login(string u, string p)
 {
-	User usr(u, p);
-	this->activeUser = usr;
+	User *usr= new User(u, p);
+	this->activeUser = (*usr);
 	return ((repoUser.findElem(usr) != -1) and (!this->activeUser.getUserName().empty()));
 }
 
@@ -39,7 +39,7 @@ void Service::logout(/*string name, string pass*/)
 //	repo.loadFromFile(f, delim);
 //}
 
-list<Serie> Service::getAllSeries()
+list<Serie*> Service::getAllSeries()
 {
 	return repo.getAll();
 }
@@ -48,23 +48,23 @@ int Service::getSize() {
 	return repo.getSize();
 }
 
-Serie Service::getItemFromPos(int i) {
-	return repo.getItemFromPos(i);
+Serie* Service::getItemFromPos(int i) {
+	return (repo.getItemFromPos(i));
 }
 
-void Service::addElem(Serie& s) {
-	//validate(s);
-	repo.addElem(s);
-}
-
-void Service::deleteElem(Serie& s) {
-	if (repo.findElem(s) == -1) {
-		throw exception("could not find item");
-	}
-	else {
-		repo.deleteElem(s);
-	}
-}
+//void Service::addElem(Serie& s) {
+//	//validate(s);
+//	repo.addElem(s);
+//}
+//
+//void Service::deleteElem(Serie& s) {
+//	if (repo.findElem(s) == -1) {
+//		throw exception("could not find item");
+//	}
+//	else {
+//		repo.deleteElem(s);
+//	}
+//}
 Service::~Service()
 {
 }

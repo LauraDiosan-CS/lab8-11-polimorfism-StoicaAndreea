@@ -16,5 +16,5 @@ public:
 class SerieValidator {
 public:
     SerieValidator(){}
-    void validate(Serie& m);
+    virtual void validate(Serie& m);
 };

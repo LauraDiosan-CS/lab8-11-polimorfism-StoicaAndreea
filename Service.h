@@ -9,21 +9,21 @@
 class Service
 {
 private:
-	RepositoryTemplate<Serie>& repo;
-	RepositoryTemplate<User>& repoUser;
+	RepositoryTemplate<Serie*>& repo;
+	RepositoryTemplate<User*>& repoUser;
 	User activeUser;
 public:
 	//Service();
-	Service(RepositoryTemplate<Serie> &r, RepositoryTemplate<User> &rep) :repo(r), repoUser(rep) { repo = r; repoUser = rep; };
+	Service(RepositoryTemplate<Serie*> &r, RepositoryTemplate<User*> &rep) :repo(r), repoUser(rep) { repo = r; repoUser = rep; };
 	bool login(string, string);
 	bool logedIn();
 	void logout(/*string, string*/);
 	//void loadFromFile(string, char);
-	list<Serie> getAllSeries();
+	list<Serie*> getAllSeries();
 	int getSize();
-	Serie getItemFromPos(int);
-	void addElem(Serie &s);
-	void deleteElem(Serie& s);
+	Serie* getItemFromPos(int);
+	//void addElem(Serie* &s);
+	//void deleteElem(Serie*& s);
 	~Service();
 };
 

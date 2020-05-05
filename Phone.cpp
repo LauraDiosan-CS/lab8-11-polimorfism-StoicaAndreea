@@ -53,24 +53,24 @@ Phone::Phone(string line, char delim) {
 	}
 }
 
-void Phone::fromString(string line, char delim) {
-	//Phone(line, delim);
-	vector<string> tokens = splitLine(line, delim);
-	this->producer = new char[tokens[0].length() + 1];
-	strcpy_s(this->producer, tokens[0].length() + 1, tokens[0].c_str());
-
-	this->model = new char[tokens[1].length() + 1];
-	strcpy_s(this->model, tokens[1].length() + 1, tokens[1].c_str());
-
-	units = stoi(tokens[2]);
-
-	vector <string> tok = splitLine(tokens[3], '-');
-	for (int i = 0; i < tok.size(); i++) {
-		//char *c= new char[tok[i].length() + 1];
-		//strcpy_s(c, tok[i].length() + 1, tok[i].c_str());
-		this->operators.push_back(tok[i]);
-	}
-}
+//void Phone::fromString(string line, char delim) {
+//	//Phone(line, delim);
+//	vector<string> tokens = splitLine(line, delim);
+//	this->producer = new char[tokens[0].length() + 1];
+//	strcpy_s(this->producer, tokens[0].length() + 1, tokens[0].c_str());
+//
+//	this->model = new char[tokens[1].length() + 1];
+//	strcpy_s(this->model, tokens[1].length() + 1, tokens[1].c_str());
+//
+//	units = stoi(tokens[2]);
+//
+//	vector <string> tok = splitLine(tokens[3], '-');
+//	for (int i = 0; i < tok.size(); i++) {
+//		//char *c= new char[tok[i].length() + 1];
+//		//strcpy_s(c, tok[i].length() + 1, tok[i].c_str());
+//		this->operators.push_back(tok[i]);
+//	}
+//}
 Serie* Phone::clone() {
 	Phone* newSerie = new Phone();
 	newSerie->setProducer(this->producer);
