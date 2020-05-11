@@ -44,12 +44,14 @@ Phone::Phone(string line, char delim) {
 	strcpy_s(this->model, tokens[1].length() + 1, tokens[1].c_str());
 
 	units = stoi(tokens[2]);
-
-	vector <string> tok = splitLine(tokens[3],'-');
-	for (int i = 0; i < tok.size(); i++) {
-		//char *c= new char[tok[i].length() + 1];
-		//strcpy_s(c, tok[i].length() + 1, tok[i].c_str());
-		this->operators.push_back(tok[i]);
+	if (tokens[3] != "$$")
+	{
+		vector <string> tok = splitLine(tokens[3], '-');
+		for (int i = 0; i < tok.size(); i++) {
+			//char *c= new char[tok[i].length() + 1];
+			//strcpy_s(c, tok[i].length() + 1, tok[i].c_str());
+			this->operators.push_back(tok[i]);
+		}
 	}
 }
 
@@ -159,24 +161,32 @@ string Phone::toString() {
 	string x, y,s;
 	x = this->producer;
 	y = this->model;
-	s = this->operators[0];
-	for (int i = 1; i < this->operators.size(); i++)
-	{
-		s =s+"-"+ this->operators[i];
+	if (this->operators.size() == 0) { s = "$$"; }
+	else {
+		s = this->operators[0];
+		for (int i = 1; i < this->operators.size(); i++)
+		{
+			s = s + "-" + this->operators[i];
+		}
 	}
 	return  x + " " + y + " " + to_string(this->units)+" "+s;
 }
+
 string Phone::toStringDelimiter(char delim) {
 	string x, y,s;
 	x = this->producer;
 	y = this->model;
-	s = this->operators[0];
-	for (int i = 1; i < this->operators.size(); i++)
-	{
-		s = s + "-" + this->operators[i];
+	if (this->operators.size() == 0) { s = "$$";}
+	else {
+		s = this->operators[0];
+		for (int i = 1; i < this->operators.size(); i++)
+		{
+			s = s + "-" + this->operators[i];
+		}
 	}
 	return  x + delim + y + delim + to_string(this->units) + delim + s;
 }
+
 ostream& operator<<(ostream& os, Phone e) {
 	os << e.producer << " " << e.model << " " << e.units << " "; //<< endl;
 	for (int i = 0; i < e.operators.size() - 1; i++)

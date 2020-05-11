@@ -14,5 +14,5 @@ public:
 class PhoneValidator/*: public SerieValidator*/ {
 public:
     PhoneValidator() {}
-    void validate(Phone& m);
+    void validate(Phone* m);
 };

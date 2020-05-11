@@ -77,7 +77,6 @@ void RepositoryFileCSV<T>::saveToFile()
 template<class T>
 RepositoryFileCSV<T>::~RepositoryFileCSV()
 {
-
 }
 
 template<class T>

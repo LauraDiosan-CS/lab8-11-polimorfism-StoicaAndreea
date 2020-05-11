@@ -76,7 +76,6 @@ void RepositoryFileHTML<T>::saveToFile()
 template<class T>
 RepositoryFileHTML<T>::~RepositoryFileHTML()
 {
-
 }
 
 template<class T>

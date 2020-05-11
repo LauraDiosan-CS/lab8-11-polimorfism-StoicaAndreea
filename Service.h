@@ -22,14 +22,14 @@ public:
 	bool login(string, string);
 	bool logedIn();
 	void logout(/*string, string*/);
-	//void loadFromFile(string, char);
-	void validatePhone(Phone p);
+	bool isPositiveInteger(const std::string& s);
+	list<Serie*> findProducer(string);
 	list<Serie*> getAllSeries();
 	int getSize();
 	Serie* getItemFromPos(int);
 	void addElem(Serie* &s);
 	void deleteElem(Serie*& s);
-	//void updateElem(Serie* s, Serie* n);
+	void updateElem(Serie* s, Serie*& n);
 	~Service();
 };
 

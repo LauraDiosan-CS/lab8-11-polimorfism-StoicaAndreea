@@ -9,6 +9,7 @@ public:
 	void logOut();
 	void addElem();
 	void findElem();
+	void updateElem();
 	void showUI();
 	void delElem();
 	void showAll();

@@ -76,6 +76,13 @@ void Tests::testRepoTemplate() {
 	Serie *e= new Phone("bbb", "aaa", 1,v);
 	rep.updateElem(e1->clone(), e->clone());
 	assert(*rep.getItemFromPos(0) == *e01);
+	delete[]e1;
+	delete[]e2;
+	delete[]e3;
+	delete[]e4;
+	delete[]e0;
+	delete[]e01;
+	delete[]e;
 }
 
 
@@ -105,6 +112,10 @@ void Tests::testRepoFileCSV() {
 	//	assert(repof.findElem(p1) == 0);
 	//	assert(repof.getItemFromPos(0) == p1);
 	assert(repof.getSize() == 4);
+	delete[]p1;
+	delete[]p2;
+	delete[]p;
+	//delete[]s;
 }
 
 void Tests::testRepoFileHTML() {
@@ -133,7 +144,13 @@ void Tests::testRepoFileHTML() {
 	//	assert(repof.findElem(p1) == 0);
 	//	assert(repof.getItemFromPos(0) == p1);
 	assert(repof.getSize() == 4);
+	delete[]p1;
+	delete[]p2;
+	delete[]p;
+	//delete[]s;
 }
+
+
 void Tests::testRepoFileSerie() {
 	SerializerSerie* s = new SerializerSerie();
 	RepositoryFile<Serie*> repof("Tests.txt", ' ', s);
@@ -161,10 +178,15 @@ void Tests::testRepoFileSerie() {
 	assert(repof.findElem(p1) == 0);
 	assert(*repof.getItemFromPos(0) == *p1);*/
 	assert(repof.getSize() == 4);
-	Phone l("ioi", "ioi", 2, v);
-	repof.addElem(l.clone());
-	repof.deleteElem(l.clone());
+	Serie* l= new Phone ("ioi", "ioi", 2, v);
+	repof.addElem(l);
+	repof.deleteElem(l);
+	delete[]p;
+	delete[]p1;
+	delete[]l;
+	//delete[]s;
 }
+
 Tests::~Tests() {}
 
 void Tests::testService() {
@@ -180,22 +202,28 @@ void Tests::testService() {
 	assert(serv.login("cristina", "1414") == 0);
 	assert(serv.login("ana", "1234") == 1);
 	assert(serv.login("maria", "1234") == 0);
+	Serie* e1 = new Drone("aaa", "aaa", 100, 2);
+	Serie* e2 = new Drone("bbb", "bbb", 100, 2);
+	Serie* e3 = new Drone("ccc", "ccc", 100, 2);
+	Serie* e4 = new Drone("aaa", "ddd", 100, 2);
+	serv.addElem(e1);
+	serv.addElem(e2);
+	serv.addElem(e3);
+	assert((serv.getAllSeries()).size() == 7);
+	serv.deleteElem(e3);
+	assert(serv.getAllSeries().size() == 6);
+	serv.updateElem(e2, e4);
+	list<Serie*>l = serv.findProducer("aaa");
+	assert(l.size() == 2);
+	//assert((*l.begin()) == e1);
+	serv.deleteElem(e4);
+	serv.deleteElem(e1);
+	delete[] e1;
+	delete[] e2;
+	delete[] e3;
+	delete[] e4;
+	//delete[] u1;
+	//delete[] u2;
+	//delete[] u3;
+
 }
-	//Phone e1("aaa", "MS 74 SSC", "free");
-	//Phone e2("bbb", "MS 75 SSC", "occupied");
-	//Phone e3("ccc", "MS 76 SSC", "free");
-	//Phone e4("ddd", "MS 77 SSC", "free");
-	//Phone e0("eee", "MS 77 SSA", "free");
-	//Phone e01("bbb", "aaa", "free");
-	//serv.addEntity(e1);
-	//serv.addEntity(e2);
-	//serv.addEntity(e3);
-	//serv.addEntity(e4);
-	//serv.addEntity(e0);
-	//assert(serv.getSize() == 5);
-	//assert(serv.getItemFromPos(0) == e1);
-	//assert(serv.findElem(e2) == 1);
-	//int n = serv.delEntity(e0);
-	//assert(serv.findElem(e0) == -1);
-//	//serv.updateEntity(e1, "aha", "aaa", "free");
-//	//assert(strcmp(serv.getItemFromPos(0).getUnits(), "free") == 0);

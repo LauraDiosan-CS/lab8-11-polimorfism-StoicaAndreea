@@ -81,7 +81,6 @@ void RepositoryFile<T>::saveToFile()
 template<class T>
 RepositoryFile<T>::~RepositoryFile()
 {
-
 }
 
 template<class T>
