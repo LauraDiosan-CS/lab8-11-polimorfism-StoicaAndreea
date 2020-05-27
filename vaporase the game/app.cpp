@@ -4,17 +4,23 @@
 #include <iostream>
 #include "Tabla.h"
 #include"Service.h"
+#include "Vapor.h"
 #include"UI.h"
 int main()
 {
     std::cout << "Hello World!\n";
-    Tabla* t = new Tabla();
-    Tabla* b = new Tabla();
+    RepositoryTemplate<Vaporas>* rp = new RepositoryTemplate<Vaporas>();
+    RepositoryTemplate<Vaporas>* rc = new RepositoryTemplate<Vaporas>();
+    RepositoryTemplate<Bomba>* rb = new RepositoryTemplate<Bomba>();
+    Tabla* t = new Tabla(rp,rb);
+    Tabla* b = new Tabla(rc,rb);
     Service s(t, b);
     UI ui(s);
     ui.showUI();
     delete t;
     delete b;
+    delete rp;
+    delete rc;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

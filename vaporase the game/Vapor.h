@@ -1,17 +1,19 @@
+#pragma once
 #include<string>
 #include<iostream>
 using namespace std;
-class Vapor {
+
+class Vaporas {
 private:
 	int x;
 	int y;
 	int len;
 	string orientareCoada;
 public:
-	Vapor();
-	Vapor(int x, int y, int len, string orientareCoada);
-	Vapor(const Vapor& a);
-	~Vapor();
+	Vaporas();
+	Vaporas(int x, int y, int len, string orientareCoada);
+	Vaporas(const Vaporas& a);
+	~Vaporas();
 	int getX();
 	int getY();
 	int getLen();
@@ -20,7 +22,8 @@ public:
 	void setY(int y);
 	void setLen(int len);
 	void setOrientareCoada(string orientareCoada);
-	Vapor& operator=(const Vapor& a);
-	bool operator==(const Vapor&);
-	friend ostream& operator<<(ostream& os, const Vapor& c);
+	Vaporas& operator=(const Vaporas& a);
+	bool operator==(const Vaporas&);
+	friend ostream& operator<<(ostream& os, const Vaporas& c);
 };
+

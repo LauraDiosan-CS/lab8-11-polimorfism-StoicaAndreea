@@ -148,16 +148,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="app.cpp" />
+    <ClCompile Include="Bomba.cpp" />
     <ClCompile Include="Service.cpp" />
     <ClCompile Include="Tabla.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="Vapor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bomba.h" />
+    <ClInclude Include="Repository.h" />
     <ClInclude Include="Service.h" />
     <ClInclude Include="Tabla.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="Vapor.h" />
+    <ClInclude Include="VaporaseValidator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

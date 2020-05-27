@@ -1,64 +1,64 @@
 #include"Vapor.h"
 
-Vapor::Vapor() {
+Vaporas::Vaporas() {
 	//cout << "const implicit";
 	this->x = 0;
 	this->y = 0;
 	this->len = 0;
 	this->orientareCoada = { '\0' };
 
-}Vapor::Vapor(int x, int y, int len, string orientareCoada) {
+}Vaporas::Vaporas(int x, int y, int len, string orientareCoada) {
 	//cout << "constructor with param" << endl;
 	this->x = x;
 	this->y = y;
 	this->len = len;
 	this->orientareCoada = orientareCoada;
 }
-Vapor::Vapor(const Vapor& a) {
+Vaporas::Vaporas(const Vaporas& a) {
 	//cout << "copy constructor" << endl;
 	this->x = a.x;
 	this->y = a.y;
 	this->len = a.len;
 	this->orientareCoada = a.orientareCoada;
 }
-Vapor::~Vapor() {
+Vaporas::~Vaporas() {
 	//cout << "Destructor";
 	this->x = 0;
 	this->y = 0;
 	this->len = 0;
 	this->orientareCoada = { '\0' };
 }
-int Vapor::getX() {
+int Vaporas::getX() {
 
 	return this->x;
 }
-int Vapor::getY() {
+int Vaporas::getY() {
 
 	return this->y;
 }
-int Vapor::getLen() {
+int Vaporas::getLen() {
 	return this->len;
 }
-string Vapor::getOrientareCoada() {
+string Vaporas::getOrientareCoada() {
 
 	return this->orientareCoada;
 }
-void Vapor::setX(int x) {
+void Vaporas::setX(int x) {
 
 	this->x = x;
 }
-void Vapor::setY(int y) {
+void Vaporas::setY(int y) {
 	this->y = y;
 }
 
-void Vapor::setLen(int len) {
+void Vaporas::setLen(int len) {
 	this->len = len;
 }
-void Vapor::setOrientareCoada(string orientareCoada) {
+void Vaporas::setOrientareCoada(string orientareCoada) {
 
 	this->orientareCoada = orientareCoada;
 
-}Vapor& Vapor::operator=(const Vapor& a) {
+}Vaporas& Vaporas::operator=(const Vaporas& a) {
 
 	this->setX(a.x);
 	this->setY(a.y);
@@ -66,11 +66,11 @@ void Vapor::setOrientareCoada(string orientareCoada) {
 	this->setOrientareCoada(a.orientareCoada);
 	return *this;
 }
-bool Vapor::operator==(const Vapor& a) {
+bool Vaporas::operator==(const Vaporas& a) {
 
 	return (this->x == a.x) && (this->y == a.y) && (this->orientareCoada.compare(a.orientareCoada) == 0);
 }
-ostream& operator<<(ostream& os, const Vapor& a) {
+ostream& operator<<(ostream& os, const Vaporas& a) {
 
 	os << "Coordonata X: " << a.x << "|" << " Coordonata Y: " << a.y << "|" << " Orientare coada:" << a.orientareCoada;
 	return os;

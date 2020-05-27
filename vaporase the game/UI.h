@@ -1,6 +1,6 @@
 #pragma once
 #include"Service.h"
-
+#include "Vapor.h"
 class UI {
 private:
 	Service s;
@@ -9,7 +9,10 @@ public:
 	void showUI();
 	void showTabla();
 	void showTablaBot();
-	void addEl();
+	void showTablaLovire();
+	void addVapor();
+	void addBomba();
+	void game();
 	int transform(char);
 	~UI() {};
 };
