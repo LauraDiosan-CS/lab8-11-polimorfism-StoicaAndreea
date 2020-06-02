@@ -5,15 +5,19 @@
 #include "Tabla.h"
 #include"Service.h"
 #include "Vapor.h"
+#include "VaporDeRazboi.h"
+#include "Yacht.h"
+#include "Submarin.h"
 #include"UI.h"
+#include "RepositoryPointers.h"
 int main()
 {
     std::cout << "Hello World!\n";
-    RepositoryTemplate<Vaporas>* rp = new RepositoryTemplate<Vaporas>();
-    RepositoryTemplate<Vaporas>* rc = new RepositoryTemplate<Vaporas>();
-    RepositoryTemplate<Bomba>* rb = new RepositoryTemplate<Bomba>();
-    Tabla* t = new Tabla(rp,rb);
-    Tabla* b = new Tabla(rc,rb);
+    RepositoryPointers<Vaporas*>* rp = new RepositoryPointers<Vaporas*>();
+    RepositoryPointers<Vaporas*>* rc = new RepositoryPointers<Vaporas*>();
+    RepositoryPointers<Bomba*>* rb = new RepositoryPointers<Bomba*>();
+    Tabla* t = new Tabla(rp/*,rb*/);
+    Tabla* b = new Tabla(rc/*,rb*/);
     Service s(t, b);
     UI ui(s);
     ui.showUI();

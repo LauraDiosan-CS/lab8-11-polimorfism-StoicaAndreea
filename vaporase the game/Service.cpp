@@ -11,10 +11,34 @@ void Service::addVaporBot(int nr) {
 	std::uniform_int_distribution<>dist(0, 2);
 	int i = 0;
 	while(i<nr) {
-		Vaporas a (distr(eng), distr(eng), len[dist(eng)], s[dis(eng)]);
-		int r = bot->addVaporas(a);
-		if (r == -1) { nr++; }
-		i++;
+		if (len[dist(eng)] == 5)
+		{
+			Vaporas* a = new VaporDeRazboi(distr(eng), distr(eng), s[dis(eng)]);
+			int r = bot->addVaporas(a);
+			if (r == -1) { nr++; }
+			delete a;
+			i++;
+		}
+		else
+		{
+			if (len[dist(eng)] == 3)
+			{
+				Vaporas* a = new Yacht(distr(eng), distr(eng), s[dis(eng)]);
+				int r = bot->addVaporas(a);
+				if (r == -1) { nr++; }
+				delete a;
+				i++;
+			}
+			else
+				if (len[dist(eng)] == 2)
+				{
+					Vaporas* a = new Submarin(distr(eng), distr(eng), s[dis(eng)]);
+					int r = bot->addVaporas(a);
+					if (r == -1) { nr++; }
+					delete a;
+					i++;
+				}
+		}
 	}
 }
 

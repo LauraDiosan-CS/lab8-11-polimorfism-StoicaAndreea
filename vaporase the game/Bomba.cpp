@@ -22,6 +22,19 @@ Bomba::~Bomba() {
 	this->x = 0;
 	this->y = 0;
 }
+Bomba* Bomba::clone() {
+	Bomba* newBomba = new Bomba();
+	newBomba->setX(this->x);
+	newBomba->setY(this->y);
+	return newBomba;
+}
+
+string Bomba::toString() {
+	string x, y;
+	x = this->x;
+	y = this->y;
+	return  x + " " + y;
+}
 int Bomba::getX() {
 
 	return this->x;

@@ -1,6 +1,9 @@
 #pragma once
 #include"Service.h"
 #include "Vapor.h"
+#include "VaporDeRazboi.h"
+#include "Yacht.h"
+#include "Submarin.h"
 class UI {
 private:
 	Service s;

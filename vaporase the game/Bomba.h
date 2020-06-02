@@ -13,6 +13,8 @@ public:
 	Bomba(int x, int y);
 	Bomba(const Bomba& a);
 	~Bomba();
+	string toString();
+	Bomba* clone();
 	int getX();
 	int getY();
 	void setX(int x);

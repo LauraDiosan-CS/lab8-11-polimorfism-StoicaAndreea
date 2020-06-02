@@ -18,7 +18,7 @@ public:
 	virtual void updateElem(T s, T& nou);
 	list<T> getAll();
 	T getItemFromPos(int);
-	T getItemFromPoint(int,int);
+	virtual T getItemFromPoint(int,int);
 	void clearElem();
 	~RepositoryTemplate();
 };

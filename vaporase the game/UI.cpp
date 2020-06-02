@@ -159,65 +159,81 @@ void UI::showTablaLovire() {
 	changeColor(7);
 }
 void UI::addVapor() {
-	cout << "how many elements will you add?";
-	int nr;
-	cin >> nr;
-	int i = 0;
-	int nn = nr;
-	char x;
-	char r;
-	int y;
-	int l;
-	string o;
-	while (i <nr) {
-		cout << endl;
-		cout << "column: ";
-		cin >> x;
-		cout << "line: ";
-		cin >> y;
-		cout << "length: ";
-		//cin >> l;
-		cout << "ce ati dori?    a. Vas de razboi|  b. Yacht| c.Submarin: ";
-		cin >> r;
-		switch (r) {
-		case'a': {l = 5; break; }
-		case 'b': {l = 3; break; }
-		case 'c': {l = 2; break; }
-		default: {
-			l = 2;
-			break; }
+		cout << "how many elements will you add?";
+		int nr;
+		cin >> nr;
+		int i = 0;
+		int nn = nr;
+		char x;
+		char r;
+		int y;
+		int l;
+		int xx;
+		int ir = -2;
+		string o;
+		while (i < nr) {
+			cout << endl;
+			cout << "column: ";
+			cin >> x;
+			cout << "line: ";
+			cin >> y;
+			cout << "orientation: ";
+			cin >> o;
+			xx = transform(x);
+			cout << "length: ";
+			cout << "ce ati dori?    a. Vas de razboi|  b. Yacht| c.Submarin: ";
+			cin >> r;
+			ir = -2;
+			try{
+				switch (r) {
+				case'a': {Vaporas* a = new VaporDeRazboi(xx - 1, y - 1, o); ir = s.addVapor(a); delete a; break; }
+				case 'b': {Vaporas* a = new Yacht(xx - 1, y - 1, o); ir = s.addVapor(a); delete a; break; }
+				case 'c': {Vaporas* a = new Submarin(xx - 1, y - 1, o); ir = s.addVapor(a); delete a; break; }
+				default: {Vaporas* a = new Submarin(xx - 1, y - 1, o); ir = s.addVapor(a); delete a; break; }
+				}
+				if (ir == -1) { cout << "se suprapune" << endl;; nr++; }
+			}
+			catch (VaporasException e)
+			{
+				nr++;
+				for (int i = 0; i < e.getErrors().size(); i++)
+					cout << e.getErrors()[i];
+			}
+			i++;
 		}
-		cout << "orientation: ";
-		cin >> o;
-		int xx = transform(x);
-		Vaporas a(xx - 1, y - 1, l, o);
-		int ir = s.addVapor(a);
-		if (ir == -1) { cout << "se suprapune" << endl;; nr++; }
-		i++;
-	}
-	s.addVaporBot(nn);
+		s.addVaporBot(nn);
 }
 
 void UI::addBomba() {
-	char x;
-	int y;
-	int i = 0;
-	int nr = 1;
-	while (i < nr) {
-		cout << endl;
-		cout << "	Bomb!!" << endl;
-		cout << "column: ";
-		cin >> x;
-		cout << "line: ";
-		cin >> y;
-		int xx = transform(x);
-		Bomba b(xx-1, y-1);
-		int ir = s.addBomb(b);
-		if (ir == -1) { cout << "not ok yet"; nr++; }
-		i++;
+	try {
+		char x;
+		int y;
+		int i = 0;
+		int nr = 1;
+		while (i < nr) {
+
+			cout << endl;
+			cout << "	Bomb!!" << endl;
+			cout << "column: ";
+			cin >> x;
+			cout << "line: ";
+			cin >> y;
+			int xx = transform(x);
+			Bomba b(xx - 1, y - 1);
+			int ir = s.addBomb(b);
+			if (ir == -1) { cout << "not ok yet"; nr++; }
+			i++;
+		}
+		s.addBombBot();
 	}
-	s.addBombBot();
+	catch (BombaException e)
+	{
+		addBomba();
+		for (int i = 0; i < e.getErrors().size(); i++)
+			cout << e.getErrors()[i];
+	}
 }
+
 void UI::game() {
 	s.newGame();
 	addVapor();
@@ -226,7 +242,7 @@ void UI::game() {
 		addBomba();
 		showTabla();
 		showTablaLovire();
-		//showTablaBot();
+		showTablaBot();
 		r = s.endOfGame();
 	}
 	if (r == 0) cout << "@@@@@@@@@@@@@	YOU LOST!!!!	@@@@@@@@@@@@@@"<<endl;

@@ -4,26 +4,28 @@
 using namespace std;
 
 class Vaporas {
-private:
+protected:
 	int x;
 	int y;
 	int len;
 	string orientareCoada;
 public:
-	Vaporas();
-	Vaporas(int x, int y, int len, string orientareCoada);
-	Vaporas(const Vaporas& a);
-	~Vaporas();
-	int getX();
-	int getY();
-	int getLen();
-	string getOrientareCoada();
-	void setX(int x);
-	void setY(int y);
-	void setLen(int len);
-	void setOrientareCoada(string orientareCoada);
-	Vaporas& operator=(const Vaporas& a);
-	bool operator==(const Vaporas&);
-	friend ostream& operator<<(ostream& os, const Vaporas& c);
+	Vaporas() {};
+	//Vaporas(int x, int y, int len, string orientareCoada);
+	//Vaporas(const Vaporas& a);
+	~Vaporas() {};
+	virtual string toString()=0;
+	virtual Vaporas* clone() = 0;
+	virtual int getX() = 0;
+	virtual int getY() = 0;
+	virtual int getLen() = 0;
+	virtual string getOrientareCoada() = 0;
+	virtual void setX(int x) = 0;
+	virtual void setY(int y) = 0;
+	virtual void setLen(int len) = 0;
+	virtual void setOrientareCoada(string orientareCoada) = 0;
+	//Vaporas& operator=(const Vaporas& a);
+	//bool operator==(const Vaporas&);
+	//friend ostream& operator<<(ostream& os, const Vaporas& c);
 };
 
